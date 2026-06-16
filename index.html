@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;background:#05070d;font-family:'Archivo',system-ui,sans-serif;}
+  .sh::-webkit-scrollbar{display:none;}
+  .sh{-ms-overflow-style:none;scrollbar-width:none;}
+  @keyframes pt-pop{0%{transform:scale(.85);opacity:0}100%{transform:scale(1);opacity:1}}
+  @keyframes pt-up{from{transform:translateY(18px);opacity:0}to{transform:translateY(0);opacity:1}}
+  @keyframes pt-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style>
+</helmet>
+<div style="min-height:100vh;width:100%;background:radial-gradient(120% 80% at 50% -10%,#172441 0%,#0a0f1c 46%,#05070d 100%);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:40px 16px;font-family:'Archivo',sans-serif;">
+  <div style="position:relative;width:390px;height:844px;border-radius:56px;background:linear-gradient(145deg,#33384a,#0b0d13);padding:13px;box-shadow:0 50px 110px -28px rgba(0,0,0,.9),0 0 0 2px rgba(255,255,255,.04),inset 0 0 0 1px rgba(255,255,255,.07);flex:none;">
+    <div style="position:relative;width:100%;height:100%;border-radius:44px;overflow:hidden;background:linear-gradient(180deg,#0d1626 0%,#0a0f1c 60%,#080c16 100%);">
+
+      <!-- STATUS BAR -->
+      <div style="position:absolute;top:0;left:0;right:0;height:54px;z-index:100;display:flex;align-items:flex-start;justify-content:space-between;padding:19px 30px 0;pointer-events:none;">
+        <div style="font-size:15px;font-weight:700;color:#fff;letter-spacing:.4px;">9:41</div>
+        <div style="display:flex;align-items:center;gap:7px;">
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="#fff"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="#fff"><path d="M8.5 2.4c2.3 0 4.4.9 6 2.4l1.3-1.4A11 11 0 0 0 8.5.5 11 11 0 0 0 1.2 3.4L2.5 4.8a8.6 8.6 0 0 1 6-2.4Z"/><path d="M8.5 6c1.3 0 2.5.5 3.4 1.4l1.3-1.4a7 7 0 0 0-9.4 0l1.3 1.4A4.8 4.8 0 0 1 8.5 6Z"/><circle cx="8.5" cy="10" r="1.7"/></svg>
+          <div style="display:flex;align-items:center;gap:2px;"><div style="width:24px;height:12px;border-radius:3px;border:1.5px solid rgba(255,255,255,.5);padding:1.5px;"><div style="width:100%;height:100%;border-radius:1px;background:#fff;"></div></div><div style="width:1.5px;height:4px;background:rgba(255,255,255,.5);border-radius:2px;"></div></div>
+        </div>
+      </div>
+      <div style="position:absolute;top:11px;left:50%;transform:translateX(-50%);width:124px;height:35px;background:#000;border-radius:20px;z-index:101;"></div>
+
+      <!-- ============ HOME / WORKOUT TAB ============ -->
+      <sc-if value="{{ isWorkoutTab }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;inset:0;">
+        <div class="sh" style="position:absolute;inset:0;overflow-y:auto;padding:60px 0 188px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 22px 14px;">
+            <div style="display:flex;align-items:center;gap:7px;"><span style="font-size:23px;font-weight:800;color:#fff;letter-spacing:-.4px;">My Plan</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8a93a8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>
+            <div style="display:flex;gap:9px;">
+              <div style="width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#cbd2e0" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div>
+              <div style="width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#cbd2e0" stroke-width="2" stroke-linecap="round"><path d="M4 6h11M19 6h1M4 12h1M9 12h11M4 18h7M15 18h5"/><circle cx="17" cy="6" r="2"/><circle cx="7" cy="12" r="2"/><circle cx="13" cy="18" r="2"/></svg></div>
+            </div>
+          </div>
+
+          <div class="sh" style="display:flex;gap:9px;overflow-x:auto;padding:0 22px 16px;">
+            <div style="flex:none;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:13.5px;font-weight:600;color:#e7ebf2;">Muscles (16)<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a93a8" stroke-width="2.8" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></div>
+            <div style="flex:none;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:13.5px;font-weight:600;color:#e7ebf2;">45–60 Min<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a93a8" stroke-width="2.8" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></div>
+            <div style="flex:none;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:13.5px;font-weight:600;color:#e7ebf2;">Schedule</div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;padding:0 16px 20px;">
+            <sc-for list="{{ weekDays }}" as="d" hint-placeholder-count="7">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+                <div style="font-size:11px;font-weight:700;color:{{ d.lblColor }};letter-spacing:.5px;">{{ d.d }}</div>
+                <div style="width:34px;height:34px;border-radius:50%;background:{{ d.bg }};display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:{{ d.fg }};">{{ d.n }}</div>
+                <div style="width:5px;height:5px;border-radius:50%;background:{{ d.dot }};"></div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="padding:0 22px;">
+            <div style="font-size:12px;font-weight:800;color:#5b8cff;letter-spacing:.6px;margin-bottom:3px;">WEEK 1 / 5 · FOUNDATIONS</div>
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+              <div>
+                <div style="font-size:27px;font-weight:900;color:#fff;letter-spacing:-.6px;line-height:1;">Today's Workout</div>
+                <div style="font-size:16px;font-weight:600;color:#9aa3b5;margin-top:5px;">Push · Chest, Shoulders &amp; Triceps</div>
+              </div>
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex:none;margin-top:2px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cbd2e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:16px;margin-top:16px;padding:13px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);">
+              <div style="display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:#e7ebf2;"><svg width="15" height="15" viewBox="0 0 24 24" fill="#FFD60A"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13z"/></svg>7 Exercises</div>
+              <div style="width:1px;height:16px;background:rgba(255,255,255,.1);"></div>
+              <div style="display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:#e7ebf2;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a93a8" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg>57 Min</div>
+              <div style="width:1px;height:16px;background:rgba(255,255,255,.1);"></div>
+              <div style="display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:#e7ebf2;"><svg width="15" height="15" viewBox="0 0 24 24" fill="#FF8A3D"><path d="M12 2c1 3-1 4-2 6s0 4 0 4-3-1-3-4c0 0-3 3-3 7a8 8 0 0 0 16 0c0-5-5-7-8-13Z"/></svg>252 Cal</div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:11px;margin-top:18px;">
+              <sc-for list="{{ homeExercises }}" as="ex" hint-placeholder-count="7">
+                <div onClick="{{ ex.onTap }}" style="display:flex;align-items:center;gap:14px;padding:11px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);cursor:pointer;">
+                  <div style="width:58px;height:58px;border-radius:13px;background:{{ ex.thumbBg }};border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex:none;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{ ex.color }}" stroke-width="2" stroke-linecap="round"><path d="M2 9v6M5 7v10M19 7v10M22 9v6M5 12h14"/></svg>
+                  </div>
+                  <div style="flex:1;min-width:0;">
+                    <div style="font-size:15.5px;font-weight:700;color:#fff;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ ex.name }}</div>
+                    <div style="font-size:13px;font-weight:500;color:#8a93a8;margin-top:3px;">{{ ex.sub }}</div>
+                  </div>
+                  <div style="flex:none;padding:5px 10px;border-radius:8px;background:{{ ex.chipBg }};border:1px solid {{ ex.chipBorder }};font-size:11px;font-weight:800;color:{{ ex.color }};letter-spacing:.3px;">{{ ex.muscleUp }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="position:absolute;left:0;right:0;bottom:84px;z-index:30;padding:18px 20px 16px;background:linear-gradient(180deg,rgba(10,15,28,0),#0a0f1c 42%);">
+          <button onClick="{{ onStart }}" style="width:100%;height:56px;border:none;border-radius:17px;background:linear-gradient(180deg,#FFE14D,#FFD60A);color:#0a0f1c;font-family:'Archivo';font-size:17px;font-weight:900;letter-spacing:.5px;cursor:pointer;box-shadow:0 10px 26px -6px rgba(255,214,10,.5);display:flex;align-items:center;justify-content:center;gap:9px;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="#0a0f1c"><path d="M7 5v14l11-7z"/></svg>START WORKOUT
+          </button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ EXERCISES / LIBRARY TAB ============ -->
+      <sc-if value="{{ isExercisesTab }}" hint-placeholder-val="{{ true }}">
+      <div class="sh" style="position:absolute;inset:0;overflow-y:auto;padding:60px 0 100px;">
+        <div style="padding:10px 22px 12px;"><div style="font-size:26px;font-weight:900;color:#fff;letter-spacing:-.5px;">Exercise Library</div><div style="font-size:14px;color:#8a93a8;font-weight:500;margin-top:3px;">320+ movements · HD video for each</div></div>
+        <div style="margin:4px 22px 16px;display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a93a8" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+          <span style="font-size:15px;color:#6b7governance;color:#6b7488;font-weight:500;">Search exercises, muscles, gear…</span>
+        </div>
+        <div class="sh" style="display:flex;gap:9px;overflow-x:auto;padding:0 22px 18px;">
+          <sc-for list="{{ libFilter }}" as="f" hint-placeholder-count="7">
+            <div onClick="{{ f.onTap }}" style="flex:none;padding:9px 15px;border-radius:11px;background:{{ f.bg }};border:1px solid rgba(255,255,255,.07);font-size:13.5px;font-weight:700;color:{{ f.fg }};cursor:pointer;">{{ f.name }}</div>
+          </sc-for>
+        </div>
+        <div style="padding:0 22px;display:flex;flex-direction:column;gap:11px;">
+          <sc-for list="{{ libList }}" as="ex" hint-placeholder-count="8">
+            <div onClick="{{ ex.onTap }}" style="display:flex;align-items:center;gap:14px;padding:11px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);cursor:pointer;">
+              <div style="width:54px;height:54px;border-radius:13px;background:{{ ex.thumbBg }};border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex:none;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ ex.color }}" stroke-width="2" stroke-linecap="round"><path d="M2 9v6M5 7v10M19 7v10M22 9v6M5 12h14"/></svg></div>
+              <div style="flex:1;min-width:0;"><div style="font-size:15.5px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ ex.name }}</div><div style="font-size:12.5px;color:#8a93a8;font-weight:600;margin-top:3px;">{{ ex.muscle }}</div></div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5b6477" stroke-width="2.4" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ PLAN TAB ============ -->
+      <sc-if value="{{ isPlanTab }}" hint-placeholder-val="{{ true }}">
+      <div class="sh" style="position:absolute;inset:0;overflow-y:auto;padding:60px 0 100px;">
+        <div style="padding:10px 22px 4px;"><div style="font-size:26px;font-weight:900;color:#fff;letter-spacing:-.5px;">Plan Overview</div><div style="font-size:14px;color:#8a93a8;font-weight:600;margin-top:4px;">4 Days · Push / Pull / Legs Split</div></div>
+        <div style="margin:16px 22px;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg,rgba(91,140,255,.16),rgba(255,214,10,.06));border:1px solid rgba(255,255,255,.08);">
+          <div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:13px;font-weight:800;color:#9aa3b5;letter-spacing:.4px;">PROGRAM PROGRESS</div><div style="font-size:13px;font-weight:800;color:#FFD60A;">44%</div></div>
+          <div style="margin-top:11px;height:9px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;"><div style="width:44%;height:100%;border-radius:6px;background:linear-gradient(90deg,#5b8cff,#FFD60A);"></div></div>
+          <div style="font-size:12.5px;color:#8a93a8;font-weight:600;margin-top:10px;">8 of 20 workouts complete · adapts automatically each week</div>
+        </div>
+        <div style="padding:0 22px;display:flex;flex-direction:column;gap:13px;">
+          <sc-for list="{{ planWeeks }}" as="w" hint-placeholder-count="5">
+            <div style="padding:15px 17px;border-radius:18px;background:{{ w.cardBg }};border:1px solid {{ w.cardBorder }};">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:13px;">
+                <div style="width:4px;height:18px;border-radius:3px;background:{{ w.color }};"></div>
+                <div style="flex:1;font-size:15px;font-weight:800;color:{{ w.titleColor }};letter-spacing:-.2px;">{{ w.name }}</div>
+                <div style="font-size:11px;font-weight:800;color:{{ w.color }};letter-spacing:.5px;">{{ w.statusLabel }}</div>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <sc-for list="{{ w.days }}" as="d" hint-placeholder-count="4">
+                  <div style="flex:1;height:42px;border-radius:11px;background:{{ d.bg }};border:1px solid {{ d.border }};display:flex;align-items:center;justify-content:center;gap:5px;font-size:13px;font-weight:700;color:{{ d.fg }};">
+                    <sc-if value="{{ d.check }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ d.fg }}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 6"/></svg></sc-if>
+                    <sc-if value="{{ d.lock }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="{{ d.fg }}" stroke-width="2.2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></sc-if>
+                    <sc-if value="{{ d.showLabel }}" hint-placeholder-val="{{ true }}">{{ d.label }}</sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ PROGRESS TAB ============ -->
+      <sc-if value="{{ isProgressTab }}" hint-placeholder-val="{{ true }}">
+      <div class="sh" style="position:absolute;inset:0;overflow-y:auto;padding:60px 0 100px;">
+        <div style="padding:10px 22px 14px;"><div style="font-size:26px;font-weight:900;color:#fff;letter-spacing:-.5px;">Your Progress</div></div>
+        <div style="padding:0 22px;display:flex;gap:10px;">
+          <div style="flex:1;padding:14px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);"><div style="font-size:21px;font-weight:900;color:#FFD60A;letter-spacing:-.5px;">48,250</div><div style="font-size:11px;font-weight:700;color:#8a93a8;margin-top:2px;">LB LIFTED</div></div>
+          <div style="flex:1;padding:14px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);"><div style="font-size:21px;font-weight:900;color:#fff;letter-spacing:-.5px;">12</div><div style="font-size:11px;font-weight:700;color:#8a93a8;margin-top:2px;">WORKOUTS</div></div>
+          <div style="flex:1;padding:14px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);"><div style="font-size:21px;font-weight:900;color:#FF8A3D;letter-spacing:-.5px;">5</div><div style="font-size:11px;font-weight:700;color:#8a93a8;margin-top:2px;">DAY STREAK</div></div>
+        </div>
+
+        <div style="margin:16px 22px;padding:17px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;"><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:700;color:#8a93a8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Dumbbell Bench Press</div><div style="font-size:12px;font-weight:600;color:#5b6477;margin-top:1px;">Estimated 1RM</div></div><div style="text-align:right;flex:none;"><div style="font-size:26px;font-weight:900;color:#fff;letter-spacing:-.6px;">95<span style="font-size:14px;color:#8a93a8;"> lb</span></div><div style="font-size:12px;font-weight:800;color:#4ADE80;">▲ 28% · 5mo</div></div></div>
+          <svg viewBox="0 0 300 130" style="width:100%;height:130px;margin-top:8px;" preserveAspectRatio="none">
+            <defs><linearGradient id="pchart" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD60A" stop-opacity="0.45"/><stop offset="1" stop-color="#FFD60A" stop-opacity="0"/></linearGradient></defs>
+            <path d="M10 108 L55 92 L100 96 L145 66 L190 74 L235 40 L285 26 L285 130 L10 130 Z" fill="url(#pchart)"/>
+            <path d="M10 108 L55 92 L100 96 L145 66 L190 74 L235 40 L285 26" fill="none" stroke="#FFD60A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="285" cy="26" r="5.5" fill="#FFD60A" stroke="#0a0f1c" stroke-width="2.5"/>
+          </svg>
+          <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:#5b6477;padding:0 4px;"><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span></div>
+        </div>
+
+        <div style="padding:0 22px 8px;display:flex;align-items:center;justify-content:space-between;"><div style="font-size:16px;font-weight:800;color:#fff;">Personal Records</div><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD60A"><path d="M12 2 9.2 8.6 2 9.2l5.5 4.7L5.8 21 12 17.3 18.2 21l-1.7-7.1L22 9.2l-7.2-.6z"/></svg></div>
+        <div style="padding:0 22px;display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ prs }}" as="p" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:13px;padding:13px 15px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);">
+              <div style="width:38px;height:38px;border-radius:11px;background:rgba(255,214,10,.14);display:flex;align-items:center;justify-content:center;flex:none;"><svg width="19" height="19" viewBox="0 0 24 24" fill="#FFD60A"><path d="M12 2 9.2 8.6 2 9.2l5.5 4.7L5.8 21 12 17.3 18.2 21l-1.7-7.1L22 9.2l-7.2-.6z"/></svg></div>
+              <div style="flex:1;"><div style="font-size:14.5px;font-weight:700;color:#fff;">{{ p.name }}</div><div style="font-size:12px;color:#8a93a8;font-weight:600;margin-top:1px;">{{ p.date }}</div></div>
+              <div style="font-size:18px;font-weight:900;color:#FFD60A;letter-spacing:-.4px;">{{ p.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SETTINGS TAB ============ -->
+      <sc-if value="{{ isSettingsTab }}" hint-placeholder-val="{{ true }}">
+      <div class="sh" style="position:absolute;inset:0;overflow-y:auto;padding:60px 0 100px;">
+        <div style="padding:10px 22px 16px;"><div style="font-size:26px;font-weight:900;color:#fff;letter-spacing:-.5px;">Profile</div></div>
+        <div style="margin:0 22px 18px;padding:18px;border-radius:20px;background:linear-gradient(135deg,rgba(255,214,10,.14),rgba(91,140,255,.08));border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px;">
+          <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#FFD60A,#FF8A3D);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#0a0f1c;">JD</div>
+          <div style="flex:1;"><div style="font-size:18px;font-weight:800;color:#fff;">Jordan Daniels</div><div style="font-size:13px;color:#9aa3b5;font-weight:600;margin-top:2px;">Goal: Build Muscle · Intermediate</div></div>
+        </div>
+        <div style="padding:0 22px;display:flex;flex-direction:column;gap:11px;">
+          <div style="font-size:12px;font-weight:800;color:#5b6477;letter-spacing:.6px;padding-left:4px;">TRAINING</div>
+          <div style="border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);overflow:hidden;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 16px;border-bottom:1px solid rgba(255,255,255,.05);"><span style="font-size:15px;font-weight:600;color:#e7ebf2;">Goal</span><span style="font-size:14px;font-weight:700;color:#FFD60A;">Build Muscle</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 16px;border-bottom:1px solid rgba(255,255,255,.05);"><span style="font-size:15px;font-weight:600;color:#e7ebf2;">Equipment</span><span style="font-size:14px;font-weight:700;color:#cbd2e0;">Full Gym</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 16px;border-bottom:1px solid rgba(255,255,255,.05);"><span style="font-size:15px;font-weight:600;color:#e7ebf2;">Days per week</span><span style="font-size:14px;font-weight:700;color:#cbd2e0;">4 days</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 16px;"><span style="font-size:15px;font-weight:600;color:#e7ebf2;">Units</span><span style="font-size:14px;font-weight:700;color:#cbd2e0;">lb / imperial</span></div>
+          </div>
+          <div style="font-size:12px;font-weight:800;color:#5b6477;letter-spacing:.6px;padding-left:4px;margin-top:8px;">PREFERENCES</div>
+          <div style="border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);overflow:hidden;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 16px;border-bottom:1px solid rgba(255,255,255,.05);"><span style="font-size:15px;font-weight:600;color:#e7ebf2;">Rest timer</span><span style="font-size:14px;font-weight:700;color:#cbd2e0;">90 sec</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 16px;"><span style="font-size:15px;font-weight:600;color:#e7ebf2;">Auto-log weights</span><div style="width:44px;height:26px;border-radius:14px;background:#FFD60A;padding:3px;display:flex;justify-content:flex-end;"><div style="width:20px;height:20px;border-radius:50%;background:#0a0f1c;"></div></div></div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ BOTTOM TAB BAR ============ -->
+      <sc-if value="{{ showTabBar }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:0;right:0;bottom:0;z-index:40;height:84px;background:rgba(9,13,22,.94);backdrop-filter:blur(22px);border-top:1px solid rgba(255,255,255,.06);display:flex;padding:11px 6px 0;">
+        <div onClick="{{ onTabWorkout }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:{{ cWorkout }};"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9v6M5 7v10M19 7v10M22 9v6M5 12h14"/></svg><span style="font-size:10.5px;font-weight:700;">Workout</span></div>
+        <div onClick="{{ onTabExercises }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:{{ cExercises }};"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="6" r="3"/><path d="M6 21v-1.5a6 6 0 0 1 12 0V21"/></svg><span style="font-size:10.5px;font-weight:700;">Exercises</span></div>
+        <div onClick="{{ onTabPlan }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:{{ cPlan }};"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14h2M8 18h2M14 14h2M14 18h2"/></svg><span style="font-size:10.5px;font-weight:700;">Plan</span></div>
+        <div onClick="{{ onTabProgress }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:{{ cProgress }};"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V11M10 19V5M16 19v-6M22 19H2"/></svg><span style="font-size:10.5px;font-weight:700;">Progress</span></div>
+        <div onClick="{{ onTabSettings }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:{{ cSettings }};"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg><span style="font-size:10.5px;font-weight:700;">Settings</span></div>
+      </div>
+      </sc-if>
+
+      <!-- ============ ACTIVE WORKOUT OVERLAY ============ -->
+      <sc-if value="{{ showActive }}" hint-placeholder-val="{{ false }}">
+      <div class="sh" style="position:absolute;inset:0;z-index:70;background:linear-gradient(180deg,#0d1626,#0a0f1c 60%);overflow-y:auto;padding:54px 0 24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px 8px;">
+          <div onClick="{{ onExit }}" style="font-size:15px;font-weight:700;color:#8a93a8;cursor:pointer;flex:none;">Exit</div>
+          <div style="font-size:14px;font-weight:800;color:#fff;letter-spacing:.4px;white-space:nowrap;flex:none;">{{ aCounter }}</div>
+          <div style="font-size:14px;font-weight:700;color:#FFD60A;cursor:pointer;white-space:nowrap;flex:none;">{{ aTimer }}</div>
+        </div>
+        <div style="padding:6px 20px 0;"><div style="height:6px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;"><div style="width:{{ progPct }}%;height:100%;border-radius:4px;background:linear-gradient(90deg,#FFD60A,#FFE14D);transition:width .35s ease;"></div></div></div>
+
+        <div style="padding:18px 20px 0;display:flex;align-items:center;gap:14px;">
+          <div style="width:62px;height:62px;border-radius:15px;background:{{ aThumbBg }};border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex:none;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="{{ aColor }}" stroke-width="2" stroke-linecap="round"><path d="M2 9v6M5 7v10M19 7v10M22 9v6M5 12h14"/></svg></div>
+          <div style="flex:1;"><div style="font-size:20px;font-weight:900;color:#fff;letter-spacing:-.4px;line-height:1.05;">{{ aName }}</div><div style="display:inline-block;margin-top:7px;padding:4px 10px;border-radius:7px;background:{{ aChipBg }};border:1px solid {{ aChipBorder }};font-size:11px;font-weight:800;color:{{ aColor }};letter-spacing:.4px;">{{ aMuscleUp }}</div></div>
+          <div onClick="{{ aOnDetail }}" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex:none;cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01" stroke-linecap="round"/></svg></div>
+        </div>
+
+        <div style="padding:18px 20px 4px;font-size:13px;font-weight:800;color:#5b6477;letter-spacing:.6px;">SETS · TARGET {{ aTargetReps }} REPS</div>
+        <div style="padding:0 20px;display:flex;flex-direction:column;gap:9px;">
+          <sc-for list="{{ aSets }}" as="s" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:13px;padding:13px 15px;border-radius:14px;background:{{ s.rowBg }};border:1px solid {{ s.rowBorder }};">
+              <div style="width:26px;height:26px;border-radius:8px;background:{{ s.numBg }};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:{{ s.numFg }};flex:none;">{{ s.num }}</div>
+              <div style="flex:1;display:flex;align-items:baseline;gap:5px;flex-wrap:nowrap;overflow:hidden;"><span style="font-size:18px;font-weight:900;color:{{ s.txt }};letter-spacing:-.4px;white-space:nowrap;">{{ s.weight }} lb</span><span style="font-size:12px;font-weight:700;color:{{ s.sub }};white-space:nowrap;">× {{ s.reps }} reps</span></div>
+              <sc-if value="{{ s.done }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ s.txt }}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 6"/></svg></sc-if>
+              <sc-if value="{{ s.active }}" hint-placeholder-val="{{ false }}"><div style="font-size:11px;font-weight:800;color:#0a0f1c;background:rgba(10,15,28,.16);padding:4px 9px;border-radius:7px;">CURRENT</div></sc-if>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- CURRENT SET LOGGER -->
+        <sc-if value="{{ aHasCurrent }}" hint-placeholder-val="{{ true }}">
+        <div style="margin:18px 20px 0;padding:17px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;"><div style="font-size:14px;font-weight:800;color:#fff;">Log Set {{ aCurNo }} of {{ aTotalSets }}</div><div style="font-size:12px;font-weight:700;color:#FFD60A;background:rgba(255,214,10,.14);padding:4px 10px;border-radius:8px;white-space:nowrap;">AI · {{ aWeight }} lb</div></div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button onClick="{{ onMinus }}" style="width:52px;height:52px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#fff;font-size:26px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;">−</button>
+            <div style="flex:1;text-align:center;"><div style="font-size:34px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;">{{ aWeight }}<span style="font-size:15px;color:#8a93a8;font-weight:700;"> lb</span></div><div style="font-size:12px;font-weight:700;color:#8a93a8;margin-top:2px;">{{ aTargetReps }} reps</div></div>
+            <button onClick="{{ onPlus }}" style="width:52px;height:52px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#fff;font-size:26px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;">+</button>
+          </div>
+          <button onClick="{{ onLog }}" style="width:100%;height:54px;margin-top:14px;border:none;border-radius:15px;background:linear-gradient(180deg,#FFE14D,#FFD60A);color:#0a0f1c;font-family:'Archivo';font-size:16px;font-weight:900;letter-spacing:.4px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 22px -6px rgba(255,214,10,.5);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a0f1c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 6"/></svg>LOG SET</button>
+        </div>
+        </sc-if>
+
+        <!-- EXERCISE COMPLETE -->
+        <sc-if value="{{ aAllDone }}" hint-placeholder-val="{{ false }}">
+        <div style="margin:18px 20px 0;padding:20px;border-radius:20px;background:rgba(74,222,128,.09);border:1px solid rgba(74,222,128,.28);text-align:center;">
+          <div style="width:46px;height:46px;border-radius:50%;background:#22c55e;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#04130a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 6"/></svg></div>
+          <div style="font-size:17px;font-weight:900;color:#fff;">Exercise Complete</div>
+          <div style="font-size:13px;color:#9aa3b5;font-weight:600;margin-top:3px;">All sets logged · nice work</div>
+        </div>
+        </sc-if>
+
+        <!-- REST TIMER -->
+        <sc-if value="{{ restRunning }}" hint-placeholder-val="{{ false }}">
+        <div style="margin:16px 20px 0;padding:15px 18px;border-radius:18px;background:linear-gradient(135deg,rgba(91,140,255,.18),rgba(91,140,255,.05));border:1px solid rgba(91,140,255,.3);display:flex;align-items:center;gap:15px;">
+          <div style="position:relative;width:50px;height:50px;flex:none;"><svg width="50" height="50" viewBox="0 0 50 50"><circle cx="25" cy="25" r="21" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="5"/><circle cx="25" cy="25" r="21" fill="none" stroke="#5b8cff" stroke-width="5" stroke-linecap="round" stroke-dasharray="132" stroke-dashoffset="{{ restOffset }}" transform="rotate(-90 25 25)" style="transition:stroke-dashoffset 1s linear;"/></svg></div>
+          <div style="flex:1;"><div style="font-size:12px;font-weight:800;color:#9ab4ff;letter-spacing:.5px;">REST</div><div style="font-size:24px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1;">{{ restLabel }}</div></div>
+          <button onClick="{{ onAddRest }}" style="height:38px;padding:0 13px;border-radius:11px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;font-family:'Archivo';font-size:13px;font-weight:800;cursor:pointer;">+15s</button>
+          <button onClick="{{ onSkipRest }}" style="height:38px;padding:0 15px;border-radius:11px;border:none;background:#5b8cff;color:#fff;font-family:'Archivo';font-size:13px;font-weight:800;cursor:pointer;">Skip</button>
+        </div>
+        </sc-if>
+
+        <div style="padding:18px 20px 0;display:flex;gap:11px;">
+          <button onClick="{{ onPrev }}" style="width:54px;height:54px;border-radius:15px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#cbd2e0;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg></button>
+          <sc-if value="{{ aAllDone }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ onNext }}" style="flex:1;height:54px;border:none;border-radius:15px;background:linear-gradient(180deg,#FFE14D,#FFD60A);color:#0a0f1c;font-family:'Archivo';font-size:16px;font-weight:900;letter-spacing:.4px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 22px -6px rgba(255,214,10,.5);">{{ nextLabel }}<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a0f1c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+          </sc-if>
+          <sc-if value="{{ aHasCurrent }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ onNext }}" style="flex:1;height:54px;border:1px solid rgba(255,255,255,.12);border-radius:15px;background:rgba(255,255,255,.04);color:#8a93a8;font-family:'Archivo';font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;">Skip Exercise<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+          </sc-if>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ EXERCISE DETAIL OVERLAY ============ -->
+      <sc-if value="{{ showDetail }}" hint-placeholder-val="{{ false }}">
+      <div class="sh" style="position:absolute;inset:0;z-index:75;background:linear-gradient(180deg,#0d1626,#0a0f1c 70%);overflow-y:auto;padding:54px 0 28px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px 12px;">
+          <div onClick="{{ onCloseDetail }}" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg></div>
+          <div onClick="{{ onToggleFav }}" style="width:40px;height:40px;border-radius:50%;background:{{ favBg }};border:1px solid {{ favBorder }};display:flex;align-items:center;justify-content:center;cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="{{ favFill }}" stroke="{{ favStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 2 9.2 8.6 2 9.2l5.5 4.7L5.8 21 12 17.3 18.2 21l-1.7-7.1L22 9.2l-7.2-.6z"/></svg></div>
+        </div>
+        <div style="padding:0 20px;"><div style="font-size:23px;font-weight:900;color:#fff;letter-spacing:-.5px;">{{ dName }}</div></div>
+        <div style="margin:14px 20px 0;position:relative;border-radius:20px;overflow:hidden;height:200px;background:radial-gradient(circle at 50% 40%,#1c2741,#0c1322);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(125deg,rgba(255,255,255,.025) 0 2px,transparent 2px 26px);"></div>
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="{{ dColor }}" stroke-width="1.4" stroke-linecap="round" style="opacity:.5;"><path d="M2 9v6M5 7v10M19 7v10M22 9v6M5 12h14"/></svg>
+          <div style="position:absolute;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,.4);"><svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0f1c"><path d="M8 5v14l11-7z"/></svg></div>
+          <div style="position:absolute;top:14px;left:14px;padding:5px 11px;border-radius:8px;background:#FFD60A;font-size:11px;font-weight:900;color:#0a0f1c;letter-spacing:.5px;">PRO VIDEO</div>
+          <div style="position:absolute;bottom:14px;right:14px;width:36px;height:36px;border-radius:10px;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        </div>
+
+        <div style="margin:18px 20px 0;padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);">
+          <div style="font-size:13px;font-weight:800;color:#5b6477;letter-spacing:.5px;margin-bottom:11px;">MUSCLES WORKED</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <div style="padding:6px 12px;border-radius:9px;background:{{ dPrimBg }};border:1px solid {{ dPrimBorder }};font-size:12px;font-weight:800;color:{{ dColor }};">{{ dMuscleUp }} · PRIMARY</div>
+            <sc-for list="{{ dSecondary }}" as="m" hint-placeholder-count="2">
+              <div style="padding:6px 12px;border-radius:9px;background:{{ m.bg }};border:1px solid {{ m.border }};font-size:12px;font-weight:800;color:{{ m.color }};">{{ m.label }}</div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="margin:14px 20px 0;padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);">
+          <div style="font-size:13px;font-weight:800;color:#5b6477;letter-spacing:.5px;margin-bottom:12px;">HOW TO PERFORM</div>
+          <div style="display:flex;flex-direction:column;gap:13px;">
+            <sc-for list="{{ dInstr }}" as="i" hint-placeholder-count="4">
+              <div style="display:flex;gap:12px;"><div style="width:24px;height:24px;border-radius:7px;background:rgba(255,214,10,.14);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#FFD60A;flex:none;">{{ i.n }}</div><div style="font-size:14px;font-weight:500;color:#cbd2e0;line-height:1.45;">{{ i.text }}</div></div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:18px 20px 0;"><button onClick="{{ onCloseDetail }}" style="width:100%;height:52px;border:1px solid rgba(255,255,255,.12);border-radius:15px;background:rgba(255,255,255,.05);color:#fff;font-family:'Archivo';font-size:15px;font-weight:800;cursor:pointer;">Back to Workout</button></div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SUMMARY OVERLAY ============ -->
+      <sc-if value="{{ showSummary }}" hint-placeholder-val="{{ false }}">
+      <div class="sh" style="position:absolute;inset:0;z-index:80;background:radial-gradient(120% 70% at 50% 0%,#1c2747,#0a0f1c 60%);overflow-y:auto;padding:70px 0 28px;">
+        <div style="text-align:center;padding:0 24px;">
+          <div style="width:74px;height:74px;border-radius:50%;background:linear-gradient(135deg,#FFE14D,#FFD60A);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 14px 40px -8px rgba(255,214,10,.55);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0a0f1c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 6"/></svg></div>
+          <div style="font-size:13px;font-weight:800;color:#FFD60A;letter-spacing:1px;">WORKOUT COMPLETE</div>
+          <div style="font-size:30px;font-weight:900;color:#fff;letter-spacing:-.6px;margin-top:4px;">Push Day Crushed 💪</div>
+          <div style="font-size:14px;color:#9aa3b5;font-weight:600;margin-top:6px;">You showed up. That's what counts.</div>
+        </div>
+        <div style="margin:24px 22px 0;padding:20px;border-radius:22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);">
+          <div style="display:flex;">
+            <div style="flex:1;text-align:center;"><div style="font-size:28px;font-weight:900;color:#FFD60A;letter-spacing:-.6px;">{{ sumWeight }}</div><div style="font-size:11px;font-weight:700;color:#8a93a8;margin-top:2px;">LB LIFTED</div></div>
+            <div style="width:1px;background:rgba(255,255,255,.1);"></div>
+            <div style="flex:1;text-align:center;"><div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:-.6px;">{{ sumSets }}</div><div style="font-size:11px;font-weight:700;color:#8a93a8;margin-top:2px;">SETS DONE</div></div>
+            <div style="width:1px;background:rgba(255,255,255,.1);"></div>
+            <div style="flex:1;text-align:center;"><div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:-.6px;">{{ sumMin }}</div><div style="font-size:11px;font-weight:700;color:#8a93a8;margin-top:2px;">MINUTES</div></div>
+          </div>
+        </div>
+        <div style="margin:14px 22px 0;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg,rgba(255,214,10,.16),rgba(255,138,61,.08));border:1px solid rgba(255,214,10,.25);display:flex;align-items:center;gap:13px;">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(255,214,10,.2);display:flex;align-items:center;justify-content:center;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFD60A"><path d="M12 2 9.2 8.6 2 9.2l5.5 4.7L5.8 21 12 17.3 18.2 21l-1.7-7.1L22 9.2l-7.2-.6z"/></svg></div>
+          <div style="flex:1;"><div style="font-size:15px;font-weight:900;color:#fff;">New Personal Record! 🏆</div><div style="font-size:12.5px;color:#cbd2e0;font-weight:600;margin-top:1px;">Dumbbell Bench Press — heaviest set yet</div></div>
+        </div>
+        <div style="padding:22px 22px 0;display:flex;flex-direction:column;gap:11px;">
+          <button onClick="{{ onShare }}" style="width:100%;height:54px;border:none;border-radius:16px;background:linear-gradient(180deg,#FFE14D,#FFD60A);color:#0a0f1c;font-family:'Archivo';font-size:16px;font-weight:900;letter-spacing:.4px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0a0f1c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v14"/></svg>Share Summary</button>
+          <button onClick="{{ onCloseSummary }}" style="width:100%;height:54px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.05);color:#fff;font-family:'Archivo';font-size:15px;font-weight:800;cursor:pointer;">Done</button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- HOME INDICATOR -->
+      <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:rgba(255,255,255,.32);z-index:120;"></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  exercises = [
+    {id:'db-bench',name:'Dumbbell Bench Press',muscle:'Chest',color:'#38BDF8',sets:3,lo:8,hi:10,weight:30},
+    {id:'incline',name:'Incline Machine Press',muscle:'Chest',color:'#38BDF8',sets:3,lo:8,hi:10,weight:90},
+    {id:'ohp',name:'Selector Overhead Press',muscle:'Shoulders',color:'#A78BFA',sets:3,lo:8,hi:10,weight:25},
+    {id:'lat-raise',name:'Cable Lateral Raise',muscle:'Shoulders',color:'#A78BFA',sets:3,lo:12,hi:15,weight:15},
+    {id:'pushdown',name:'Triceps Pushdown',muscle:'Triceps',color:'#F472B6',sets:3,lo:10,hi:12,weight:40},
+    {id:'oh-ext',name:'Overhead Triceps Ext.',muscle:'Triceps',color:'#F472B6',sets:3,lo:10,hi:12,weight:25},
+    {id:'ab',name:'Ab Machine Crunch',muscle:'Core',color:'#4ADE80',sets:3,lo:10,hi:12,weight:30},
+  ];
+  library = [
+    {name:'Barbell Bench Press',muscle:'Chest',color:'#38BDF8'},
+    {name:'Incline Dumbbell Press',muscle:'Chest',color:'#38BDF8'},
+    {name:'Overhand Lat Pulldown',muscle:'Back',color:'#2DD4BF'},
+    {name:'Seated Cable Row',muscle:'Back',color:'#2DD4BF'},
+    {name:'Selector Overhead Press',muscle:'Shoulders',color:'#A78BFA'},
+    {name:'Cable Lateral Raise',muscle:'Shoulders',color:'#A78BFA'},
+    {name:'Barbell Back Squat',muscle:'Legs',color:'#FBBF24'},
+    {name:'Leg Press',muscle:'Legs',color:'#FBBF24'},
+    {name:'Romanian Deadlift',muscle:'Legs',color:'#FBBF24'},
+    {name:'Triceps Pushdown',muscle:'Arms',color:'#F472B6'},
+    {name:'Dumbbell Biceps Curl',muscle:'Arms',color:'#FB923C'},
+    {name:'Hanging Leg Raise',muscle:'Core',color:'#4ADE80'},
+  ];
+  prs = [
+    {name:'Dumbbell Bench Press',value:'30 lb',date:'Today'},
+    {name:'Overhand Lat Pulldown',value:'55 lb',date:'2 days ago'},
+    {name:'Barbell Back Squat',value:'135 lb',date:'1 week ago'},
+    {name:'Romanian Deadlift',value:'115 lb',date:'1 week ago'},
+  ];
+  planWeeksData = [
+    {name:'Week 1 · Foundations',color:'#5b8cff',status:'done',days:['done','done','done','done']},
+    {name:'Week 2 · Load',color:'#FBBF24',status:'done',days:['done','done','done','done']},
+    {name:'Week 3 · Load+',color:'#FFD60A',status:'current',days:['done','active','todo','todo']},
+    {name:'Week 4 · Pre-Peak',color:'#FB923C',status:'locked',days:['locked','locked','locked','locked']},
+    {name:'Week 5 · Peak',color:'#F87171',status:'locked',days:['locked','locked','locked','locked']},
+  ];
+  secMap = {
+    Chest:[['Shoulders','#A78BFA'],['Triceps','#F472B6']],
+    Back:[['Biceps','#FB923C'],['Rear Delts','#A78BFA']],
+    Shoulders:[['Triceps','#F472B6'],['Traps','#2DD4BF']],
+    Legs:[['Glutes','#FBBF24'],['Core','#4ADE80']],
+    Arms:[['Forearms','#FB923C']],
+    Core:[['Hip Flexors','#4ADE80']],
+    Triceps:[['Chest','#38BDF8']],
+  };
+  instr = [
+    'Set up on the machine and adjust the seat so the handles sit level with mid-chest.',
+    'Grip firmly, retract your shoulder blades and keep your chest tall and braced.',
+    'Drive through the movement in a controlled tempo until your arms are nearly straight.',
+    'Pause briefly, then return under control. Keep constant tension on the target muscle.',
+  ];
+
+  state = {
+    tab:'workout', overlay:null, finished:false,
+    detailEx:null, curEx:0,
+    sets: this.exercises.map(e=>Array.from({length:e.sets},()=>({done:false,weight:e.weight}))),
+    rest:0, restTotal:90, restRunning:false,
+    libMuscle:'All', favs:{}, startTime:null, elapsed:0,
+  };
+
+  clearRest = () => { if(this.ri){clearInterval(this.ri);this.ri=null;} };
+  componentWillUnmount(){ this.clearRest(); }
+
+  setTab = (t) => this.setState({tab:t,overlay:null,finished:false});
+  openDetail = (ex) => { this._return = this.state.overlay; this.setState({detailEx:ex,overlay:'detail'}); };
+  closeDetail = () => this.setState({overlay:this._return||null,detailEx:null});
+  startWorkout = () => this.setState({overlay:'active',curEx:0,startTime:Date.now()});
+  exitWorkout = () => { this.clearRest(); this.setState({overlay:null,restRunning:false,rest:0}); };
+
+  startRest = (sec) => {
+    this.clearRest();
+    this.setState({rest:sec,restTotal:sec,restRunning:true});
+    this.ri = setInterval(()=>{
+      this.setState(s=>{
+        if(s.rest<=1){ this.clearRest(); return {rest:0,restRunning:false}; }
+        return {rest:s.rest-1};
+      });
+    },1000);
+  };
+  skipRest = () => { this.clearRest(); this.setState({rest:0,restRunning:false}); };
+  addRest = () => this.setState(s=>({rest:s.rest+15,restTotal:Math.max(s.restTotal,s.rest+15)}));
+
+  cloneSets = () => this.state.sets.map(a=>a.map(o=>({...o})));
+  logActiveSet = () => {
+    const i=this.state.curEx, sets=this.cloneSets(), arr=sets[i];
+    const k=arr.findIndex(s=>!s.done);
+    if(k<0) return;
+    arr[k].done=true;
+    const more=arr.some(s=>!s.done);
+    this.setState({sets});
+    if(more) this.startRest(90); else this.skipRest();
+  };
+  adjustWeight = (d) => {
+    const i=this.state.curEx, sets=this.cloneSets(), arr=sets[i];
+    const k=arr.findIndex(s=>!s.done);
+    const idx = k<0 ? arr.length-1 : k;
+    arr[idx].weight = Math.max(0, arr[idx].weight + d);
+    this.setState({sets});
+  };
+  nextExercise = () => {
+    this.skipRest();
+    if(this.state.curEx < this.exercises.length-1) this.setState(s=>({curEx:s.curEx+1}));
+    else this.finishWorkout();
+  };
+  prevExercise = () => { this.skipRest(); this.setState(s=>({curEx:Math.max(0,s.curEx-1)})); };
+  finishWorkout = () => {
+    this.skipRest();
+    const el = this.state.startTime ? Math.max(1,Math.round((Date.now()-this.state.startTime)/60000)) : 48;
+    this.setState({finished:true,overlay:null,elapsed:el});
+  };
+  closeSummary = () => this.setState({finished:false,overlay:null,tab:'workout'});
+  toggleFav = () => { const n=this.state.detailEx&&this.state.detailEx.name; if(!n)return; this.setState(s=>({favs:{...s.favs,[n]:!s.favs[n]}})); };
+
+  renderVals(){
+    const S=this.state, EX=this.exercises;
+    const tab=S.tab, ov=S.overlay, fin=S.finished;
+    const tint=(c,a)=>c+a;
+    const tc=(t)=> tab===t ? '#FFD60A' : '#5b6477';
+
+    // week strip
+    const days=[['Su',5,0],['Mo',6,1],['Tu',7,1],['We',8,0],['Th',9,1],['Fr',10,0],['Sa',11,1]];
+    const weekDays=days.map((d,i)=>{
+      const sel=i===1;
+      return {d:d[0], n:d[1],
+        bg: sel?'#FFD60A':'transparent',
+        fg: sel?'#0a0f1c':'#cbd2e0',
+        lblColor: sel?'#FFD60A':'#5b6477',
+        dot: d[2] ? (sel?'#0a0f1c':'#FFD60A') : 'transparent'};
+    });
+
+    const homeExercises=EX.map(e=>({
+      name:e.name, color:e.color, muscleUp:e.muscle.toUpperCase(),
+      sub:'3 sets × '+e.lo+'–'+e.hi+' reps × '+e.weight+' lb',
+      thumbBg:'linear-gradient(135deg,'+tint(e.color,'2e')+',rgba(255,255,255,.02))',
+      chipBg:tint(e.color,'20'), chipBorder:tint(e.color,'40'),
+      onTap:()=>this.openDetail(e),
+    }));
+
+    // library
+    const muscles=['All','Chest','Back','Shoulders','Legs','Arms','Core'];
+    const libFilter=muscles.map(m=>({
+      name:m, bg: S.libMuscle===m?'#FFD60A':'rgba(255,255,255,.05)',
+      fg: S.libMuscle===m?'#0a0f1c':'#cbd2e0', onTap:()=>this.setState({libMuscle:m}),
+    }));
+    const libList=this.library.filter(x=>S.libMuscle==='All'||x.muscle===S.libMuscle).map(x=>({
+      name:x.name, muscle:x.muscle, color:x.color,
+      thumbBg:'linear-gradient(135deg,'+tint(x.color,'2e')+',rgba(255,255,255,.02))',
+      onTap:()=>this.openDetail({...x,lo:8,hi:12,sets:3,weight:'—'}),
+    }));
+
+    // plan
+    const dayStyle=(st,wcolor)=>{
+      if(st==='done') return {bg:tint(wcolor,'1c'),border:tint(wcolor,'33'),fg:wcolor,check:true,lock:false,showLabel:false,label:''};
+      if(st==='active') return {bg:wcolor,border:wcolor,fg:'#0a0f1c',check:false,lock:false,showLabel:true,label:'Day 2'};
+      if(st==='locked') return {bg:'rgba(255,255,255,.02)',border:'rgba(255,255,255,.05)',fg:'#4a melt',fg:'#4d5568',check:false,lock:true,showLabel:false,label:''};
+      return {bg:'rgba(255,255,255,.04)',border:'rgba(255,255,255,.07)',fg:'#9aa3b5',check:false,lock:false,showLabel:true,label:'Day'};
+    };
+    const statusLabels={done:'COMPLETE',current:'IN PROGRESS',locked:'LOCKED'};
+    const planWeeks=this.planWeeksData.map((w,wi)=>({
+      name:w.name, color:w.color, statusLabel:statusLabels[w.status],
+      cardBg: w.status==='current'?'rgba(255,214,10,.06)':'rgba(255,255,255,.035)',
+      cardBorder: w.status==='current'?'rgba(255,214,10,.3)':'rgba(255,255,255,.06)',
+      titleColor: w.status==='locked'?'#7a8194':'#fff',
+      days: w.days.map((st,di)=>{ const o=dayStyle(st,w.color); o.label = st==='active'?'Day '+(di+1): 'Day '+(di+1); if(st==='todo')o.label='Day '+(di+1); return o; }),
+    }));
+
+    // active workout
+    const ex=EX[Math.min(S.curEx,EX.length-1)];
+    const arr=S.sets[S.curEx]||[];
+    const firstUndone=arr.findIndex(s=>!s.done);
+    const allDone=firstUndone<0;
+    const targetReps=ex.lo+'–'+ex.hi;
+    const aSets=arr.map((s,idx)=>{
+      const isA=idx===firstUndone, dn=s.done;
+      let rowBg,rowBorder,txt,sub,numBg,numFg;
+      if(dn){ rowBg='rgba(74,222,128,.08)'; rowBorder='rgba(74,222,128,.22)'; txt='#cdeedb'; sub='#7bbf97'; numBg='#22c55e'; numFg='#04130a'; }
+      else if(isA){ rowBg='rgba(255,214,10,.1)'; rowBorder='rgba(255,214,10,.32)'; txt='#fff'; sub='#caa94a'; numBg='rgba(255,214,10,.25)'; numFg='#FFD60A'; }
+      else { rowBg='rgba(255,255,255,.03)'; rowBorder='rgba(255,255,255,.06)'; txt='#8a93a8'; sub='#5b6477'; numBg='rgba(255,255,255,.06)'; numFg='#8a93a8'; }
+      return {num:idx+1, weight:s.weight, reps:targetReps, done:dn, active:isA, rowBg,rowBorder,txt,sub,numBg,numFg};
+    });
+    const activeWeight = allDone ? (arr.length?arr[arr.length-1].weight:0) : arr[firstUndone].weight;
+    const totalSets=EX.reduce((a,e)=>a+e.sets,0);
+    const doneSets=S.sets.reduce((a,x)=>a+x.filter(s=>s.done).length,0);
+    const progPct=Math.round(doneSets/totalSets*100);
+    const restLabel=Math.floor(S.rest/60)+':'+String(S.rest%60).padStart(2,'0');
+    const restOffset = 132 - (S.restTotal ? (S.rest/S.restTotal)*132 : 132);
+    const isLast=S.curEx===EX.length-1;
+
+    // detail
+    const dx=S.detailEx||{};
+    const dMuscle=dx.muscle||'Chest';
+    const dColor=dx.color||'#38BDF8';
+    const dFav=!!(dx.name&&S.favs[dx.name]);
+    const dSecondary=(this.secMap[dMuscle]||[]).map(m=>({label:m[0].toUpperCase(),color:m[1],bg:tint(m[1],'20'),border:tint(m[1],'40')}));
+    const dInstr=this.instr.map((t,i)=>({n:i+1,text:t}));
+
+    // summary — fall back to demo values so the screen looks good before any sets are logged
+    const rawWeight=S.sets.reduce((a,x,i)=>a+x.reduce((b,s)=>b+(s.done?s.weight*EX[i].lo:0),0),0);
+    const rawSets=S.sets.reduce((a,x)=>a+x.filter(s=>s.done).length,0);
+    const totalWeight = rawWeight || 6840;
+    const demoSets = rawSets || 21;
+
+    return {
+      isWorkoutTab: tab==='workout'&&!ov&&!fin, isExercisesTab: tab==='exercises'&&!ov&&!fin, isPlanTab: tab==='plan'&&!ov&&!fin,
+      isProgressTab: tab==='progress'&&!ov&&!fin, isSettingsTab: tab==='settings'&&!ov&&!fin,
+      showTabBar: !ov && !fin, showActive: ov==='active', showDetail: ov==='detail', showSummary: fin,
+      cWorkout:tc('workout'), cExercises:tc('exercises'), cPlan:tc('plan'), cProgress:tc('progress'), cSettings:tc('settings'),
+      onTabWorkout:()=>this.setTab('workout'), onTabExercises:()=>this.setTab('exercises'),
+      onTabPlan:()=>this.setTab('plan'), onTabProgress:()=>this.setTab('progress'), onTabSettings:()=>this.setTab('settings'),
+      weekDays, homeExercises, onStart:this.startWorkout,
+      libFilter, libList,
+      planWeeks,
+      prs:this.prs,
+      // active
+      aCounter:(S.curEx+1)+' / '+EX.length, aTimer:'⏱ '+Math.min(S.curEx*7+3,57)+'m',
+      aName:ex.name, aColor:ex.color, aMuscleUp:ex.muscle.toUpperCase(),
+      aThumbBg:'linear-gradient(135deg,'+tint(ex.color,'2e')+',rgba(255,255,255,.02))',
+      aChipBg:tint(ex.color,'20'), aChipBorder:tint(ex.color,'40'),
+      aTargetReps:targetReps, aSets, aWeight:activeWeight, aCurNo:(allDone?arr.length:firstUndone+1), aTotalSets:ex.sets,
+      aHasCurrent:!allDone, aAllDone:allDone, progPct,
+      onMinus:()=>this.adjustWeight(-5), onPlus:()=>this.adjustWeight(5), onLog:this.logActiveSet,
+      onNext:this.nextExercise, onPrev:this.prevExercise, nextLabel: isLast?'Finish Workout':'Next Exercise',
+      onExit:this.exitWorkout, aOnDetail:()=>this.openDetail(ex),
+      restRunning:S.restRunning, restLabel, restOffset, onSkipRest:this.skipRest, onAddRest:this.addRest,
+      // detail
+      dName:dx.name||'Exercise', dColor, dMuscleUp:dMuscle.toUpperCase(),
+      dPrimBg:tint(dColor,'20'), dPrimBorder:tint(dColor,'40'), dSecondary, dInstr,
+      onCloseDetail:this.closeDetail, onToggleFav:this.toggleFav,
+      favFill: dFav?'#FFD60A':'none', favStroke: dFav?'#FFD60A':'#8a93a8',
+      favBg: dFav?'rgba(255,214,10,.16)':'rgba(255,255,255,.06)', favBorder: dFav?'rgba(255,214,10,.4)':'rgba(255,255,255,.1)',
+      // summary
+      sumWeight: totalWeight.toLocaleString(), sumSets: demoSets, sumMin: S.elapsed || 52,
+      onShare:()=>{}, onCloseSummary:this.closeSummary,
+    };
+  }
+}
+</script>
+</body>
+</html>
